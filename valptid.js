@@ -120,7 +120,24 @@
       }
     }
 
+    /* loads in the valptid stylesheet and fonts */
+    function initialise_stylesheet() {
+      var stylesheet_element  = document.createElement('link'),
+          font_element = document.createElement('link');
+
+      // load fonts from google
+      font_element.rel  = 'stylesheet';
+      font_element.href = 'https://fonts.googleapis.com/css?family=Work+Sans:300,400,700';
+      document.head.appendChild(font_element);
+
+      // load the valptid stylesheet
+      stylesheet_element.rel  = 'stylesheet';
+      stylesheet_element.href = 'style.css';
+      document.head.appendChild(stylesheet_element);
+    }
+
     // kick off the timers
+    initialise_stylesheet();
     initialise_timers();
 
   }
