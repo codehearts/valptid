@@ -39,7 +39,9 @@ describe 'date string', ->
       'December':  '12',
 
     for month_name, month_number of test_data
-      timer = new ValptidTimer(new Date('2017-' + month_number + '-01T12:30:00-00:00'))
+      timer = new ValptidTimer(
+        new Date("2017-#{month_number}-01T12:30:00-00:00"))
       diff = timer.diff_against(new Date('2018-01-01T12:30:00-00:00'))
 
-      diff.subtitle.should.equal 'time since ' + month_name + ' 1, 2017 at 12:30 GMT', month_number
+      diff.subtitle.should.equal \
+        "time since #{month_name} 1, 2017 at 12:30 GMT", month_number

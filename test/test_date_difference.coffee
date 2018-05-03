@@ -203,10 +203,10 @@ describe 'date difference', ->
     for data in test_data
       timer = new ValptidTimer(new Date(data[0]))
       diff = timer.diff_against(new Date(data[1]))
-      diff.years.should.equal      data[2], data[0] + ' to ' + data[1] + ' years'
-      diff.months.should.equal     data[3], data[0] + ' to ' + data[1] + ' months'
-      diff.days.should.equal       data[4], data[0] + ' to ' + data[1] + ' days'
-      diff.hours.should.equal      data[5], data[0] + ' to ' + data[1] + ' hours'
-      diff.minutes.should.equal    data[6], data[0] + ' to ' + data[1] + ' minutes'
-      diff.seconds.should.equal    data[7], data[0] + ' to ' + data[1] + ' seconds'
-      diff.total_days.should.equal data[8], data[0] + ' to ' + data[1] + ' total days'
+      diff.years.should.equal      data[2], "#{data[0]} to #{data[1]} years"
+      diff.months.should.equal     data[3], "#{data[0]} to #{data[1]} months"
+      diff.days.should.equal       data[4], "#{data[0]} to #{data[1]} days"
+      diff.hours.should.equal      data[5], "#{data[0]} to #{data[1]} hours"
+      diff.minutes.should.equal    data[6], "#{data[0]} to #{data[1]} minutes"
+      diff.seconds.should.equal    data[7], "#{data[0]} to #{data[1]} seconds"
+      diff.total_days.should.equal data[8], "#{data[0]} to #{data[1]} day total"

@@ -2,7 +2,7 @@ require '../valptid.js'
 
 describe 'time difference', ->
 
-  it 'should wrap hours around the hour, minute, and second offset of the timer', ->
+  it 'should wrap hours around the timer\'s hour, minute, and second offset', ->
     timer = new ValptidTimer(new Date('2017-01-02T12:30:30'))
 
     test_data =
