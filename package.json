@@ -17,6 +17,7 @@
     "valptid.js"
   ],
   "scripts": {
+    "lint": "eslint valptid.js; coffeelint -q test/",
     "test": "nyc mocha -r /app/valptid -r chai/register-should -r coffeescript/register test/*.coffee",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
@@ -27,6 +28,8 @@
     "mocha-sinon": "^2.0.0",
     "coffeescript": "^2.3.0",
     "nyc": "^11.7.1",
-    "codecov": "^3.0.1"
+    "codecov": "^3.0.1",
+    "eslint": "^4.19.1",
+    "coffeelint": "^2.1.0"
   }
 }
