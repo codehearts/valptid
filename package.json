@@ -1,0 +1,32 @@
+{
+  "name": "valptid",
+  "description": "Human-readable differences between dates and times",
+  "author": "Catherine Hart",
+  "version": "0.0.1",
+  "license": "MIT",
+  "homepage": "https://codehearts.github.io/valptid/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codehearts/valptid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/codehearts/valptid/issues"
+  },
+  "main": "valptid.js",
+  "files": [
+    "valptid.js"
+  ],
+  "scripts": {
+    "test": "nyc mocha -r /app/valptid -r chai/register-should -r coffeescript/register test/*.coffee",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+  },
+  "devDependencies": {
+    "mocha": "^5.1.1",
+    "chai": "^4.1.2",
+    "sinon": "^5.0.3",
+    "mocha-sinon": "^2.0.0",
+    "coffeescript": "^2.3.0",
+    "nyc": "^11.7.1",
+    "codecov": "^3.0.1"
+  }
+}

@@ -1,8 +1,14 @@
-sudo: required
+language: node_js
+node_js:
+  - 8
 
-language: generic
+cache:
+  directories:
+    - node_modules
 
-services:
-  - docker
-
-script: make test_with_codecov
+jobs:
+  include:
+    - stage: test
+      script: npm test
+    - stage: coverage
+      script: npm coverage
