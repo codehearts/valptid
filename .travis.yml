@@ -1,8 +1,13 @@
-sudo: required
+language: node_js
+node_js:
+  - 8
 
-language: generic
+cache:
+  directories:
+    - node_modules
 
-services:
-  - docker
+env:
+  - TARGET=lint
+  - TARGET=coverage
 
-script: make test_with_codecov
+script: npm run $TARGET
