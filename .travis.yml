@@ -9,7 +9,7 @@ cache:
 jobs:
   include:
     - stage: test
-      script: npm lint
-    - script: npm test
+      script: npm run lint
+    - script: npm run test
     - stage: coverage
-      script: npm coverage
+      script: npm run coverage
