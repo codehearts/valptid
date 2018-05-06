@@ -18,8 +18,8 @@
   ],
   "scripts": {
     "lint": "eslint valptid.js; coffeelint -q test/",
-    "test": "nyc mocha -r ./valptid -r chai/register-should -r coffeescript/register test/*.coffee",
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+    "test": "mocha -r ./valptid -r chai/register-should -r coffeescript/register test/*.coffee",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "devDependencies": {
     "mocha": "^5.1.1",
