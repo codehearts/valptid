@@ -18,19 +18,21 @@
   ],
   "scripts": {
     "lint": "eslint valptid.js; coffeelint -q test/",
-    "test": "mocha -r ./valptid -r chai/register-should -r coffeescript/register test/*.coffee",
-    "coverage": "nyc npm test && nyc report --reporter=text-lcov > coverage.lcov && codecov"
+    "test": "mocha -r chai/register-should -r coffeescript/register test/*.coffee",
+    "test-coverage": "nyc yarn test",
+    "report-coverage": "yarn run test-coverage && nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "devDependencies": {
-    "mocha": "^5.1.1",
     "chai": "^4.1.2",
-    "sinon": "^5.0.3",
-    "zombie": "^6.1.2",
-    "mocha-sinon": "^2.0.0",
-    "coffeescript": "^2.3.0",
-    "nyc": "^11.7.1",
     "codecov": "^3.0.1",
+    "coffeelint": "^2.1.0",
+    "coffeescript": "^2.3.0",
     "eslint": "^4.19.1",
-    "coffeelint": "^2.1.0"
+    "istanbul": "^0.4.5",
+    "mocha": "^5.1.1",
+    "mocha-sinon": "^2.0.0",
+    "nyc": "^11.8.0",
+    "sinon": "^5.0.3",
+    "zombie": "^6.1.2"
   }
 }

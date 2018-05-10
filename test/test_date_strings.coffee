@@ -1,3 +1,5 @@
+require '../valptid.js'
+
 describe 'date string', ->
 
   it 'should not display times of 00:00:00', ->

@@ -8,6 +8,6 @@ cache:
 
 env:
   - TARGET=lint
-  - TARGET=coverage
+  - TARGET=report-coverage
 
-script: npm run $TARGET
+script: yarn run $TARGET
