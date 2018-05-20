@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>basic test</title>
+  </head>
+
+  <section class="timers">
+    <article class="timer" data-title="initial commit" data-date="1970-01-01T00:00:00-00:00">
+    </article>
+  </section>
+
+  <script src="../../node_modules/sinon/pkg/sinon.js"></script>
+  <script>const clock = sinon.useFakeTimers(new Date('1971-02-02T01:01:01-00:00'))</script>
+  <script src="../../valptid.js"></script>
+</html>

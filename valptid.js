@@ -25,6 +25,10 @@ function ValptidTimer(element) {
 
 }
 
+ValptidTimer.classes = {
+  hours: TIMER_HOURS_CLASS,
+}
+
 /*
  *
  * ValptidTimer DOM functions
@@ -99,8 +103,6 @@ ValptidTimer.prototype.initialise_dom = function() {
  */
 
 /* calculates the time difference between this timer's date and the given one */
-/* TODO calculate in user's local timezone */
-/* TODO support missed days */
 ValptidTimer.prototype.diff_against = function(other_date) {
   // determine whether the timer is in the past or the future from the other date
   this.is_in_past = (this.date < other_date);
@@ -204,7 +206,6 @@ ValptidTimer.prototype.initialise_from_element = function(element) {
   this.title = element.dataset.hasOwnProperty('title') ? element.dataset.title : 'untitled';
 
   // Date object is initialised by data-date attribute. defaults to unix epoch if not present
-  // TODO display an error if data-date wasn't defined
   this.date = new Date((element.dataset.hasOwnProperty('date') ? element.dataset.date : '1970-01-01'));
 
   this.diff_against(new Date(Date.now()));
