@@ -23,15 +23,15 @@
     "report-coverage": "yarn run test-coverage && nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
+    "chai": "4.1.2",
     "codecov": "^3.0.1",
-    "coffeelint": "^2.1.0",
-    "coffeescript": "^2.3.0",
-    "eslint": "^4.19.1",
-    "mocha": "^5.1.1",
-    "mocha-sinon": "^2.0.0",
-    "nyc": "^11.8.0",
-    "sinon": "^5.0.3",
-    "zombie": "^6.1.2"
+    "coffeelint": "2.1.0",
+    "coffeescript": "2.3.0",
+    "eslint": "4.19.1",
+    "mocha": "5.1.1",
+    "mocha-sinon": "2.1.0",
+    "nyc": "11.8.0",
+    "sinon": "5.0.7",
+    "zombie": "6.1.2"
   }
 }
