@@ -96,6 +96,14 @@ ValptidTimer.prototype.initialise_dom = function() {
   this.elements['parent'].appendChild(working_element);
 }
 
+/* updates all DOM nodes for this timer */
+ValptidTimer.prototype.update_dom = function() {
+  // replace the container element in the DOM with an updated one
+  this.elements['parent'].replaceChild(
+    this.create_time_value_container_element(),
+    this.elements['parent'].querySelector('section'));
+}
+
 /*
  *
  * ValptidTimer data initialisation and processing functions
@@ -226,6 +234,15 @@ function Valptid() {
     for (var timer_element of document.querySelectorAll('.' + TIMER_CLASS)) {
       timers.push(new ValptidTimer(timer_element));
     }
+
+    window.setInterval(function () {
+      const current_datetime = new Date(Date.now());
+
+      timers.forEach(function (timer) {
+        timer.diff_against(current_datetime);
+        timer.update_dom();
+      });
+    }, 1000);
   }
 
   /* loads in the valptid stylesheet and fonts */
