@@ -36,7 +36,7 @@ describe 'timer DOM elements', ->
     filePath = path.join './.nyc_output', fileName + '-' + testcase + '.json'
 
     # Write the instrumentation as JSON
-    content = JSON.stringify browser.evaluate '__browser__'
+    content = JSON.stringify browser.evaluate 'window.__browser__'
     fs.writeFileSync filePath, content
 
     # Increment the testcase number
