@@ -26,7 +26,12 @@ function ValptidTimer(element) {
 }
 
 ValptidTimer.classes = {
+  years: TIMER_YEARS_CLASS,
+  months: TIMER_MONTHS_CLASS,
+  days: TIMER_DAYS_CLASS,
   hours: TIMER_HOURS_CLASS,
+  minutes: TIMER_MINUTES_CLASS,
+  seconds: TIMER_SECONDS_CLASS,
 }
 
 /*
@@ -161,8 +166,8 @@ ValptidTimer.prototype.diff_against = function(other_date) {
   // use seconds to calculate seconds, minutes, hours, and days
   this.seconds = newer.second - older.second;
   this.minutes = (60*(newer.minute - older.minute) + this.seconds) / 60;
-  this.hours   = (60*(60*(newer.hour - older.hour) + this.minutes) + this.seconds) / 3600;
-  this.days    = (60*(60*(24*(newer.day - older.day) + this.hours) + this.minutes) + this.seconds) / 86400;
+  this.hours   = ((newer.hour - older.hour) + (this.minutes / 60 + this.seconds) / 60);
+  this.days    = ((newer.day - older.day) + (this.hours / 3600 + this.minutes / 60 + this.seconds) / (24 * 3600));
 
   // add the number of days in each month until the days are positive
   // if the timer date is before the other date, start from the month before the other date's month
