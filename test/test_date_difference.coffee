@@ -3,7 +3,7 @@ require '../valptid.js'
 describe 'date difference', ->
 
   it 'should wrap days around months and the time offset of the timer', ->
-    timer = new ValptidTimer(new Date('2017-02-03T12:30:30'))
+    timer = new ValptidTimer(new Date('2017-02-03T12:30:30Z'))
 
     test_data =
       # past dates
@@ -23,11 +23,11 @@ describe 'date difference', ->
       '2017-03-04T12:30:30':  1, # 1m01d00h00m00s since
 
     for compare_date, expected_days of test_data
-      diff = timer.diff_against(new Date(compare_date))
+      diff = timer.diff_against(new Date(compare_date + 'Z'))
       diff.days.should.equal expected_days, compare_date
 
   it 'should wrap days around february 29 on leap years', ->
-    timer = new ValptidTimer(new Date('2016-03-01T12:30:30'))
+    timer = new ValptidTimer(new Date('2016-03-01T12:30:30Z'))
 
     test_data =
       # past dates
@@ -42,11 +42,11 @@ describe 'date difference', ->
       '2016-03-03T12:30:30': 2, # 2d00h00m00s since
 
     for compare_date, expected_days of test_data
-      diff = timer.diff_against(new Date(compare_date))
+      diff = timer.diff_against(new Date(compare_date + 'Z'))
       diff.days.should.equal expected_days, compare_date
 
   it 'should wrap total days around the time offset of the timer', ->
-    timer = new ValptidTimer(new Date('2017-02-01T12:30:30'))
+    timer = new ValptidTimer(new Date('2017-02-01T12:30:30Z'))
 
     test_data =
       # past dates
@@ -66,11 +66,11 @@ describe 'date difference', ->
       '2017-03-04T12:30:30': 31, # 31d00h00m00s since
 
     for compare_date, expected_days of test_data
-      diff = timer.diff_against(new Date(compare_date))
+      diff = timer.diff_against(new Date(compare_date + 'Z'))
       diff.total_days.should.equal expected_days, compare_date
 
   it 'should count february 29 in total days on leap years', ->
-    timer = new ValptidTimer(new Date('2016-02-01T12:30:30'))
+    timer = new ValptidTimer(new Date('2016-02-01T12:30:30Z'))
 
     test_data =
       '2016-02-01T12:30:30':  0, # 0d since
@@ -80,11 +80,11 @@ describe 'date difference', ->
       '2016-03-01T12:30:30': 29, # 29d since
 
     for compare_date, expected_days of test_data
-      diff = timer.diff_against(new Date(compare_date))
+      diff = timer.diff_against(new Date(compare_date + 'Z'))
       diff.total_days.should.equal expected_days, compare_date
 
   it 'should wrap months around the time offset of the timer', ->
-    timer = new ValptidTimer(new Date('2017-02-15T12:30:30'))
+    timer = new ValptidTimer(new Date('2017-02-15T12:30:30Z'))
 
     test_data =
       # past dates
@@ -104,11 +104,11 @@ describe 'date difference', ->
       '2018-03-15T12:30:30':  1, # 1y01m00d00h00m00s since
 
     for compare_date, expected_months of test_data
-      diff = timer.diff_against(new Date(compare_date))
+      diff = timer.diff_against(new Date(compare_date + 'Z'))
       diff.months.should.equal expected_months, compare_date
 
   it 'should wrap months around february 29 on leap years', ->
-    timer = new ValptidTimer(new Date('2016-04-01T12:30:30'))
+    timer = new ValptidTimer(new Date('2016-04-01T12:30:30Z'))
 
     test_data =
       # past dates
@@ -118,10 +118,10 @@ describe 'date difference', ->
       '2016-03-02T12:30:30': 0, # 0m30d00h00m00s until
 
     for compare_date, expected_months of test_data
-      diff = timer.diff_against(new Date(compare_date))
+      diff = timer.diff_against(new Date(compare_date + 'Z'))
       diff.months.should.equal expected_months, compare_date
 
-    timer = new ValptidTimer(new Date('2016-01-01T12:30:30'))
+    timer = new ValptidTimer(new Date('2016-01-01T12:30:30Z'))
 
     test_data =
       # future dates
@@ -131,11 +131,11 @@ describe 'date difference', ->
       '2016-03-01T12:30:30': 2, # 2m00d00h00m00s since
 
     for compare_date, expected_months of test_data
-      diff = timer.diff_against(new Date(compare_date))
+      diff = timer.diff_against(new Date(compare_date + 'Z'))
       diff.months.should.equal expected_months, compare_date
 
   it 'should wrap years around the time offset of the timer', ->
-    timer = new ValptidTimer(new Date('2017-01-01T12:30:30'))
+    timer = new ValptidTimer(new Date('2017-01-01T12:30:30Z'))
 
     test_data =
       # past dates
@@ -150,11 +150,11 @@ describe 'date difference', ->
       '2019-01-01T12:30:30': 2, # 1y01m00d00h00m00s since
 
     for compare_date, expected_years of test_data
-      diff = timer.diff_against(new Date(compare_date))
+      diff = timer.diff_against(new Date(compare_date + 'Z'))
       diff.years.should.equal expected_years, compare_date
 
   it 'should wrap months and days together', ->
-    timer = new ValptidTimer(new Date('2017-02-03T12:30:30'))
+    timer = new ValptidTimer(new Date('2017-02-03T12:30:30Z'))
 
     test_data =
       '2016-12-03T12:30:30': [ 2,  0], # [ months, days ]
@@ -191,7 +191,7 @@ describe 'date difference', ->
       '2018-04-03T12:30:29': [ 1, 30],
 
     for compare_date, expected of test_data
-      diff = timer.diff_against(new Date(compare_date))
+      diff = timer.diff_against(new Date(compare_date + 'Z'))
       diff.months.should.equal expected[0], compare_date
       diff.days.should.equal expected[1], compare_date
 

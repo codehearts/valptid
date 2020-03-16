@@ -26,7 +26,12 @@ function ValptidTimer(element) {
 }
 
 ValptidTimer.classes = {
+  years: TIMER_YEARS_CLASS,
+  months: TIMER_MONTHS_CLASS,
+  days: TIMER_DAYS_CLASS,
   hours: TIMER_HOURS_CLASS,
+  minutes: TIMER_MINUTES_CLASS,
+  seconds: TIMER_SECONDS_CLASS,
 }
 
 /*
@@ -96,6 +101,14 @@ ValptidTimer.prototype.initialise_dom = function() {
   this.elements['parent'].appendChild(working_element);
 }
 
+/* updates all DOM nodes for this timer */
+ValptidTimer.prototype.update_dom = function() {
+  // replace the container element in the DOM with an updated one
+  this.elements['parent'].replaceChild(
+    this.create_time_value_container_element(),
+    this.elements['parent'].querySelector('section'));
+}
+
 /*
  *
  * ValptidTimer data initialisation and processing functions
@@ -153,8 +166,8 @@ ValptidTimer.prototype.diff_against = function(other_date) {
   // use seconds to calculate seconds, minutes, hours, and days
   this.seconds = newer.second - older.second;
   this.minutes = (60*(newer.minute - older.minute) + this.seconds) / 60;
-  this.hours   = (60*(60*(newer.hour - older.hour) + this.minutes) + this.seconds) / 3600;
-  this.days    = (60*(60*(24*(newer.day - older.day) + this.hours) + this.minutes) + this.seconds) / 86400;
+  this.hours   = ((newer.hour - older.hour) + (this.minutes / 60 + this.seconds) / 60);
+  this.days    = ((newer.day - older.day) + (this.hours / 3600 + this.minutes / 60 + this.seconds) / (24 * 3600));
 
   // add the number of days in each month until the days are positive
   // if the timer date is before the other date, start from the month before the other date's month
@@ -226,6 +239,15 @@ function Valptid() {
     for (var timer_element of document.querySelectorAll('.' + TIMER_CLASS)) {
       timers.push(new ValptidTimer(timer_element));
     }
+
+    window.setInterval(function () {
+      const current_datetime = new Date(Date.now());
+
+      timers.forEach(function (timer) {
+        timer.diff_against(current_datetime);
+        timer.update_dom();
+      });
+    }, 1000);
   }
 
   /* loads in the valptid stylesheet and fonts */
