@@ -19,12 +19,10 @@
   "scripts": {
     "lint": "eslint valptid.js; coffeelint -q test/",
     "test": "mocha -r chai/register-should -r coffeescript/register test/*.coffee",
-    "test-coverage": "nyc npm test",
-    "report-coverage": "npm run test-coverage && nyc report --reporter=text-lcov > coverage.lcov && codecov"
+    "test-coverage": "nyc npm test && nyc report --reporter=text-lcov > coverage.lcov"
   },
   "devDependencies": {
     "chai": "4.3.4",
-    "codecov": "3.8.2",
     "coffeelint": "2.1.0",
     "coffeescript": "2.5.1",
     "eslint": "7.27.0",
