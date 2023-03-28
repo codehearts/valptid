@@ -24,7 +24,7 @@
   "devDependencies": {
     "chai": "4.3.4",
     "coffeescript": "2.7.0",
-    "eslint": "8.36.0",
+    "eslint": "8.37.0",
     "mocha": "10.2.0",
     "mocha-sinon": "2.1.2",
     "nyc": "15.1.0",
